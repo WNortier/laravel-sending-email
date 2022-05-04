@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data = [
+        'title'=>'This is the email title',
+        'content'=>'This is the email content'
+    ];
+
+    Mail::send('emails.test', $data, function($message){
+        $message->to('warwick.nortier@gmail.com', 'Warwick')->subject('This is the test subject');
+    });
 });
