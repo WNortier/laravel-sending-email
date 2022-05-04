@@ -20,7 +20,7 @@ Route::get('/', function () {
         'content'=>'This is the email content'
     ];
 
-    Mail::send('emails.test', $data, function($message){
+    Mail::send('emails.email', $data, function($message){
         $message->to('warwick.nortier@gmail.com', 'Warwick')->subject('This is the test subject');
     });
 });
